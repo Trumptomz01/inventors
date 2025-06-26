@@ -8,15 +8,20 @@
    <link rel="stylesheet" href="/src/output.css">
 </head>
 <body class="bg-neutral-200 flex flex-col">
-   <header class="shadow-2xs h-[40px] items-center flex p-5  border-b-1 border-b-gray-300 ">
+   <header class="shadow-2xs h-[50px] items-center flex p-5  border-b-1 border-b-gray-300 ">
       <h1 class="font-extrabold text-2xl "><span class="text-red-600">C</span>ontri</h1>   
    </header>
+
    <section class="my-3 w-full  flex justify-center gap-3 p-3  items-center">
       <div class="w-[100%] flex justify-between pr-3 pl-3 gap-5">
-         <input type="search" name="searchCountry" placeholder="search by name, region..." id="search" class="font-bold min-w-[80%] ml-auto border-1 border-gray-500 rounded-[30px] p-3">
-         <button class="ml-auto cursor-pointer  text-[25px] text-gray-500 hover:text-gray-800 transition-all"><i class="fa-solid fa-list"></i></button>
+         <input type="search" name="searchCountry" placeholder="search by name, region or capital" id="search" class="font-bold min-w-[80%] ml-auto border-1 border-gray-500 rounded-[30px] p-3">
+         <button id="filter-btn" class="ml-auto cursor-pointer  text-[25px] text-gray-500 hover:text-gray-800 transition-all"><i class="fa-solid fa-list"></i></button>
       </div>
    </section>
+
+   <div id="filters" class="hidden top-[130px] absolute gap-2 flex-wrap self-center backdrop-blur-lg shadow-2xl text-white p-4 rounded sm:w-[50%] w-full  ml-auto">
+   </div>
+   
    <main>
       <section class=" p-5 gap-5 columns-1 sm:columns-2 lg:columns-3" id="cardsContainer">
 
