@@ -106,7 +106,7 @@ async function showFilter() {
       regions.forEach(region => {
          const option = document.createElement("button");
          option.id = "filterButtons";
-         option.classList.add("bg-red-400", "active:bg-red-500", "hover:bg-red-500", "px-4", "py-1", "rounded-md", "text-white", "font-bold", "mr-2", "mb-2");
+         option.classList.add("bg-red-400", "active:bg-red-500", "hover:bg-red-500", "px-4", "py-1", "rounded-[30px]", "text-gray-100", "hover:text-white", "font-bold", "mr-2", "mb-2", "transition-all", "duration-400", "cursor-pointer");
          option.innerHTML = region;
          filteredSelection.appendChild(option);
       });
@@ -114,6 +114,15 @@ async function showFilter() {
       filterButtons.forEach(button =>{
          button.addEventListener("click", (e)=>{
             e.preventDefault();
+            filterButtons.forEach(btn =>{
+                if (btn !== e.target) {
+                  btn.classList.remove("bg-red-600");
+                  btn.classList.add("bg-red-400");
+               }else{
+                  btn.classList.remove("bg-red-400");
+                  btn.classList.add("bg-red-600");
+               }
+            })           
             const selectedRegion = e.target.innerHTML;
             const filteredCountries = allCountries.filter(country => country.region.toLowerCase() === selectedRegion.toLowerCase());
             if (filteredCountries.length === 0) {
