@@ -109,6 +109,13 @@ async function showFilter() {
          option.classList.add("bg-red-400", "active:bg-red-500", "hover:bg-red-500", "px-4", "py-1", "rounded-[30px]", "text-gray-100", "hover:text-white", "font-bold", "mr-2", "mb-2", "transition-all", "duration-400", "cursor-pointer");
          option.innerHTML = region;
          filteredSelection.appendChild(option);
+
+         const filterHead = document.querySelector("#filter-head");
+         if (filterHead) {
+         filterHead.innerHTML = `<i class="fa-solid fa-filter"></i> Filter by Region`;
+         }
+
+
       });
       const filterButtons = document.querySelectorAll("#filterButtons");
       filterButtons.forEach(button =>{
@@ -122,7 +129,8 @@ async function showFilter() {
                   btn.classList.remove("bg-red-400");
                   btn.classList.add("bg-red-600");
                }
-            })           
+            });
+
             const selectedRegion = e.target.innerHTML;
             const filteredCountries = allCountries.filter(country => country.region.toLowerCase() === selectedRegion.toLowerCase());
             if (filteredCountries.length === 0) {
@@ -144,15 +152,16 @@ async function showFilter() {
 };
 
 // showFilter();
-const filter = document.querySelector("#filters")
+const filterSection = document.querySelector("#filterSection")
 document.querySelector("#filter-btn").addEventListener("click", ()=>{
-   if (filter.classList.contains("hidden")) {
-      filter.classList.remove("hidden");
-      filter.classList.add("flex");
+   if (filterSection.classList.contains("hidden")) {
+      filterSection.classList.remove("hidden");
+      filterSection.classList.add("flex");
       showFilter();
    } else {
-      filter.classList.remove("flex");
-      filter.classList.add("hidden");
+      filterSection.classList.remove("flex");
+      filterSection.classList.add("hidden");
    }
 });
 console.log(filter);
+document.querySelector("#filter-head").innerHTML = `<i class="fa-solid fa-filter"></i> Filter by Region`;
