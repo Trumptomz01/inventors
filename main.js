@@ -1,5 +1,7 @@
 let allCountries = [];
+document.addEventListener("DOMContentLoaded", () => {
 
+});
 async function fetchCountries() {
    try {
       const response = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,region,flags,population");
@@ -58,17 +60,21 @@ function performSearch(){
 searchInput.addEventListener("input", (e)=>{
    e.preventDefault();
    performSearch();
-})
+});
 
-function skeleton() {
+function skeleton(show = true) {
    const loading = document.querySelector("#loader");
-   loading.classList.remove("hidden");
-   loading.classList.add("grid");
-   setTimeout(() => {
+   if (show) {
+      loading.classList.remove("hidden");
+      loading.classList.add("grid");
+   } else {
       loading.classList.remove("grid");
       loading.classList.add("hidden");
-   }, 5000);
-}
+   }
+};
+document.addEventListener("DOMContentLoaded", () => {
+   skeleton(false);
+});
 
 async function displayCountries(countries) { 
    const cardContainer = document.querySelector("#cardsContainer");
@@ -117,6 +123,7 @@ async function showFilter() {
 
 
       });
+
       const filterButtons = document.querySelectorAll("#filterButtons");
       filterButtons.forEach(button =>{
          button.addEventListener("click", (e)=>{
@@ -139,8 +146,7 @@ async function showFilter() {
             } else {
                searchInput.value = selectedRegion.toLowerCase(); 
                performSearch();
-
-               // displayCountries(filteredCountries);
+               displayCountries(filteredCountries);
             }
          });
       });
@@ -151,7 +157,6 @@ async function showFilter() {
    }
 };
 
-// showFilter();
 const filterSection = document.querySelector("#filterSection")
 document.querySelector("#filter-btn").addEventListener("click", ()=>{
    if (filterSection.classList.contains("hidden")) {
@@ -162,6 +167,14 @@ document.querySelector("#filter-btn").addEventListener("click", ()=>{
       filterSection.classList.remove("flex");
       filterSection.classList.add("hidden");
    }
+   document.body.addEventListener("click", (e)=>{
+      if (!filterSection.contains(e.target) && !document.querySelector("#filter-btn").contains(e.target)) {
+         if (!filterSection.classList.contains("hidden")) {
+            filterSection.classList.remove("flex");
+            filterSection.classList.add("hidden");
+         }
+      }
+   });
 });
-console.log(filter);
+
 document.querySelector("#filter-head").innerHTML = `<i class="fa-solid fa-filter"></i> Filter by Region`;
