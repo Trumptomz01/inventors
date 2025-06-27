@@ -236,6 +236,9 @@
   .top-\[150px\] {
     top: 150px;
   }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
   .m-1 {
     margin: calc(var(--spacing) * 1);
   }
@@ -244,6 +247,9 @@
   }
   .m-5 {
     margin: calc(var(--spacing) * 5);
+  }
+  .m-auto {
+    margin: auto;
   }
   .mx-1 {
     margin-inline: calc(var(--spacing) * 1);
@@ -271,6 +277,9 @@
   }
   .mr-2 {
     margin-right: calc(var(--spacing) * 2);
+  }
+  .mr-auto {
+    margin-right: auto;
   }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
