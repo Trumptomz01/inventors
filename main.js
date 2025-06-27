@@ -178,3 +178,6 @@ document.querySelector("#filter-btn").addEventListener("click", ()=>{
 });
 
 document.querySelector("#filter-head").innerHTML = `<i class="fa-solid fa-filter"></i> Filter by Region`;
+
+const user = undefined;
+console.log(user.name);
