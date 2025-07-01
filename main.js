@@ -47,6 +47,7 @@ function performSearch(){
          cardContainer.innerHTML = "<p class='text-center text-red-500'>No countries found</p>";
       } else {
          displayCountries(filteredCountries);
+         skeleton(false);
       }
    } catch (error) {
       const cardContainer = document.querySelector("#cardsContainer");
